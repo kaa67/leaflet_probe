@@ -1,11 +1,22 @@
-import { useSelector } from 'react-redux'
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { sitesFetch } from './redux';
 
 const App = () => {
     const sites = useSelector(state => state.sites.list);
-    console.log(sites)
+    const dispatch = useDispatch();
+
+    useEffect(
+      () => {
+          dispatch(sitesFetch());
+      },
+      [dispatch],
+    );
+
     return (
         <>
-            Leaflet sample
+            <h1>Leaflet sample</h1>
             <hr />
             {(sites || []).map(
                 site => (
