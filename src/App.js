@@ -1,26 +1,23 @@
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux'
 
-const mapStateToProps = state => ({
-  sites: state.sites.sites,
-});
-
-const App = ({ sites }) => {
-  console.log(sites)
-  return (
-    <>
-      Leaflet sample
-      <hr />
-      {(sites || []).map(
-        site => (
-          <div
-            key={site.id}
-          >
-            {site.name}
-          </div>
-        )
-      )}
-    </>
-  );
+const App = () => {
+    const sites = useSelector(state => state.sites.list);
+    console.log(sites)
+    return (
+        <>
+            Leaflet sample
+            <hr />
+            {(sites || []).map(
+                site => (
+                    <div
+                        key={site.id}
+                    >
+                        {site.name}
+                    </div>
+                ),
+            )}
+        </>
+    );
 };
 
-export default connect(mapStateToProps)(App);
+export default App;
