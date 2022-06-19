@@ -2,15 +2,21 @@ import { configureStore } from '@reduxjs/toolkit';
 import createSagaMiddleware from 'redux-saga';
 
 import routes, {
-    routeCreate,
-    routeUpdate,
-    routeDelete,
+    routesSet,
+    routesInProgress,
+    modeRouteCreator,
 } from './slices/routes';
 import sites, {
-    sitesFetch,
     sitesSet,
     sitesInProgress,
 } from './slices/sites';
+import {
+    dataFetch,
+
+    routeCreate,
+    routeUpdate,
+    routeDelete,
+} from './actions'; 
 import rootSaga from '../sagas';
 
 const sagaMiddleware = createSagaMiddleware();
@@ -25,12 +31,18 @@ const store = configureStore({
 });
 
 export {
+    routesSet,
+    routesInProgress,
+    modeRouteCreator,
+
+    sitesSet,
+    sitesInProgress,
+
+    dataFetch,
+
     routeCreate,
     routeUpdate,
     routeDelete,
-    sitesFetch,
-    sitesSet,
-    sitesInProgress,
 };
 
 sagaMiddleware.run(rootSaga);

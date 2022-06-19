@@ -1,32 +1,38 @@
 import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { Layout } from 'antd';
 
-import { sitesFetch } from './redux';
+import { dataFetch } from './store';
+
+import Menu from './components/menu';
+import Dashboard from './components/dashboard';
+import Informer from './components/informer';
+
+const { Header, Footer, Content } = Layout;
 
 const App = () => {
-    const sites = useSelector(state => state.sites.list);
     const dispatch = useDispatch();
 
     useEffect(
       () => {
-          dispatch(sitesFetch());
+          dispatch(dataFetch());
       },
       [dispatch],
     );
 
     return (
         <>
-            <h1>Leaflet sample</h1>
-            <hr />
-            {(sites || []).map(
-                site => (
-                    <div
-                        key={site.id}
-                    >
-                        {site.name}
-                    </div>
-                ),
-            )}
+            <Layout>
+              <h1>Leaflet sample</h1>
+              <Header>
+                  <Menu />
+              </Header>
+              <Content>
+                  <Dashboard />
+              </Content>
+              <Footer>Footer</Footer>
+            </Layout>
+            <Informer />
         </>
     );
 };
