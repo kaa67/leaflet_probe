@@ -7,6 +7,7 @@ import App from './App';
 
 // import 'antd/dist/antd.css';
 import 'antd/dist/antd.min.css';
+import './styles.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 

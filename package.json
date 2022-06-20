@@ -10,6 +10,7 @@
     "@testing-library/user-event": "^13.2.1",
     "add": "^2.0.6",
     "antd": "^4.21.2",
+    "leaflet": "^1.8.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.2",

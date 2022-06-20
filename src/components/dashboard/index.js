@@ -14,7 +14,7 @@ const Dashboard = () => {
     }
 
     return (
-        <div>
+        <div className="dashboard">
             <Routes />
             <Separator />
             <Map />
